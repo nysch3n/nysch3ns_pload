@@ -8,8 +8,6 @@ curl -o nysch3ns_pload.zip https://github.com/nysch3n/nysch3ns_pload/archive/ref
 
 Expand-Archive .\nysch3ns_pload.zip
 
-cd nysch3ns_pload
-
 cd nysch3ns_pload\nysch3ns_pload-main
 
 cmd
