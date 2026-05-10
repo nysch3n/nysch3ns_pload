@@ -8,17 +8,17 @@
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 **For educational and defensive research purposes only.** This script is a Proof of Concept (PoC) designed to simulate the delivery of a `curl`-based reverse shell (compatible with listeners like Hoaxshell). It was built to understand attacker execution flows and to develop SIEM/Sysmon detection rules. Do not use this on systems you do not own or do not have explicit permission to test.
 
 ---
 
-## 🔍 What is CmdEURL?
+## What is CmdEURL?
 CmdEURL is a Python-based payload delivery simulator. It acts as a software-based "BadUSB" by utilizing the `pyautogui` library to inject a malicious command directly into the active terminal window. 
 
 The injected command leverages `curl.exe` (a native Windows binary - Living off the Land) to establish a beaconing reverse shell connection to a remote listener. 
 
-### 🛡️ SOC / Blue Team Perspective
+### SOC / Blue Team Perspective
 This project was developed as part of my **Red-to-Blue** learning path. By building the delivery mechanism and the payload itself, I gained hands-on experience in:
 1. **LOLBins (Living off the Land Binaries):** Understanding how attackers abuse legitimate administrative tools like `curl` and `findstr` to bypass basic antivirus signatures.
 2. **Command Line Obfuscation:** Observing how environment variables (`!protocol!!ip!`) are used in `cmd.exe` to hide the true destination IP from static analysis.
@@ -26,14 +26,14 @@ This project was developed as part of my **Red-to-Blue** learning path. By build
 
 ---
 
-## 🛑 2026 Update & Defender Efficacy (Historical Context)
+## 2026 Update & Defender Efficacy (Historical Context)
 **Note:** While this execution flow was highly effective around 2022-2023, modern Windows updates, Microsoft Defender, and AMSI now heavily signature Hoaxshell and this specific `curl` command line structure. 
 
 This script is maintained as a **historical research tool** to demonstrate how LotL attacks evolved and to show exactly why modern AV/EDR solutions flag these specific execution chains today.
 
 ---
 
-## ⚡ Execution Flow
+## Execution Flow
 1. The script prompts the user for the attacker's IP and Port.
 2. It dynamically formats a `cmd.exe` payload containing a `curl` beacon loop.
 3. Using `pyautogui`, it automatically types the crafted command into the active Command Prompt and executes it via the `Enter` key.
@@ -41,7 +41,7 @@ This script is maintained as a **historical research tool** to demonstrate how L
 
 ---
 
-## 🛠️ Installation & Requirements
+## Installation & Requirements
 
 **Target Requirements:**
 - Windows OS
@@ -61,7 +61,7 @@ cd nysch3ns_pload\nysch3ns_pload-main
 # 4. Install dependencies
 pip install -r requirements.txt
 ```
-## 🚀 Usage
+## Usage
 1. Start your listener on your attacking machine (e.g., using hoaxshell by t3l3machus).
 2. Open a standard cmd.exe window on the target machine.
 3. Run the Python script.
